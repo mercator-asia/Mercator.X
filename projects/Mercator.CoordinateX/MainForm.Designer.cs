@@ -30,6 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.IdentifierFieldNameTextBox = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.ParametersTextBox = new System.Windows.Forms.TextBox();
             this.DecimalsTextBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.ZoneTextBox = new System.Windows.Forms.TextBox();
@@ -52,10 +56,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.OpenCoordinateFileButton = new System.Windows.Forms.Button();
             this.CoordinateFileNameTextBox = new System.Windows.Forms.TextBox();
-            this.ParametersTextBox = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.IdentifierFieldNameTextBox = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -83,14 +83,50 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Size = new System.Drawing.Size(572, 124);
+            this.groupBox1.Size = new System.Drawing.Size(572, 125);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "属性描述";
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(206, 93);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(68, 17);
+            this.label10.TabIndex = 29;
+            this.label10.Text = "标识字段名";
+            // 
+            // IdentifierFieldNameTextBox
+            // 
+            this.IdentifierFieldNameTextBox.Location = new System.Drawing.Point(281, 91);
+            this.IdentifierFieldNameTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.IdentifierFieldNameTextBox.Name = "IdentifierFieldNameTextBox";
+            this.IdentifierFieldNameTextBox.Size = new System.Drawing.Size(105, 23);
+            this.IdentifierFieldNameTextBox.TabIndex = 28;
+            this.IdentifierFieldNameTextBox.Text = "地块编号";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(10, 93);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(56, 17);
+            this.label7.TabIndex = 27;
+            this.label7.Text = "转换参数";
+            // 
+            // ParametersTextBox
+            // 
+            this.ParametersTextBox.Location = new System.Drawing.Point(79, 91);
+            this.ParametersTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ParametersTextBox.Name = "ParametersTextBox";
+            this.ParametersTextBox.Size = new System.Drawing.Size(112, 23);
+            this.ParametersTextBox.TabIndex = 26;
+            this.ParametersTextBox.Text = ",,,,,,";
+            // 
             // DecimalsTextBox
             // 
-            this.DecimalsTextBox.Location = new System.Drawing.Point(471, 60);
+            this.DecimalsTextBox.Location = new System.Drawing.Point(471, 59);
             this.DecimalsTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.DecimalsTextBox.Name = "DecimalsTextBox";
             this.DecimalsTextBox.Size = new System.Drawing.Size(91, 23);
@@ -100,7 +136,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(403, 63);
+            this.label6.Location = new System.Drawing.Point(402, 62);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(32, 17);
             this.label6.TabIndex = 24;
@@ -108,7 +144,7 @@
             // 
             // ZoneTextBox
             // 
-            this.ZoneTextBox.Location = new System.Drawing.Point(281, 60);
+            this.ZoneTextBox.Location = new System.Drawing.Point(281, 59);
             this.ZoneTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ZoneTextBox.Name = "ZoneTextBox";
             this.ZoneTextBox.Size = new System.Drawing.Size(105, 23);
@@ -118,7 +154,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(207, 63);
+            this.label5.Location = new System.Drawing.Point(206, 62);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(32, 17);
             this.label5.TabIndex = 22;
@@ -136,7 +172,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(403, 33);
+            this.label4.Location = new System.Drawing.Point(402, 33);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 17);
             this.label4.TabIndex = 20;
@@ -144,7 +180,7 @@
             // 
             // ProjectionTypeTextBox
             // 
-            this.ProjectionTypeTextBox.Location = new System.Drawing.Point(281, 29);
+            this.ProjectionTypeTextBox.Location = new System.Drawing.Point(281, 28);
             this.ProjectionTypeTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ProjectionTypeTextBox.Name = "ProjectionTypeTextBox";
             this.ProjectionTypeTextBox.Size = new System.Drawing.Size(105, 23);
@@ -154,7 +190,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(207, 33);
+            this.label3.Location = new System.Drawing.Point(206, 33);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 17);
             this.label3.TabIndex = 18;
@@ -165,14 +201,14 @@
             this.ZoneTypeTextBox.Location = new System.Drawing.Point(79, 59);
             this.ZoneTypeTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ZoneTypeTextBox.Name = "ZoneTypeTextBox";
-            this.ZoneTypeTextBox.Size = new System.Drawing.Size(113, 23);
+            this.ZoneTypeTextBox.Size = new System.Drawing.Size(112, 23);
             this.ZoneTypeTextBox.TabIndex = 17;
             this.ZoneTypeTextBox.Text = "3";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 63);
+            this.label2.Location = new System.Drawing.Point(10, 62);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 17);
             this.label2.TabIndex = 16;
@@ -192,7 +228,7 @@
             this.CoordinateSystemTextBox.Location = new System.Drawing.Point(79, 28);
             this.CoordinateSystemTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CoordinateSystemTextBox.Name = "CoordinateSystemTextBox";
-            this.CoordinateSystemTextBox.Size = new System.Drawing.Size(113, 23);
+            this.CoordinateSystemTextBox.Size = new System.Drawing.Size(112, 23);
             this.CoordinateSystemTextBox.TabIndex = 14;
             this.CoordinateSystemTextBox.Text = "80国家大地坐标系";
             // 
@@ -202,7 +238,7 @@
             this.groupBox2.Controls.Add(this.OpenShpFileButton);
             this.groupBox2.Controls.Add(this.ShpFileNameTextBox);
             this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Location = new System.Drawing.Point(12, 145);
+            this.groupBox2.Location = new System.Drawing.Point(12, 144);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -213,7 +249,7 @@
             // 
             // CreateCoordinateFileButton
             // 
-            this.CreateCoordinateFileButton.Location = new System.Drawing.Point(487, 27);
+            this.CreateCoordinateFileButton.Location = new System.Drawing.Point(486, 27);
             this.CreateCoordinateFileButton.Name = "CreateCoordinateFileButton";
             this.CreateCoordinateFileButton.Size = new System.Drawing.Size(75, 23);
             this.CreateCoordinateFileButton.TabIndex = 30;
@@ -265,7 +301,7 @@
             // 
             // CreateShpFileButton
             // 
-            this.CreateShpFileButton.Location = new System.Drawing.Point(487, 26);
+            this.CreateShpFileButton.Location = new System.Drawing.Point(486, 25);
             this.CreateShpFileButton.Name = "CreateShpFileButton";
             this.CreateShpFileButton.Size = new System.Drawing.Size(75, 23);
             this.CreateShpFileButton.TabIndex = 34;
@@ -276,7 +312,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 29);
+            this.label9.Location = new System.Drawing.Point(6, 28);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(80, 17);
             this.label9.TabIndex = 31;
@@ -284,7 +320,7 @@
             // 
             // OpenCoordinateFileButton
             // 
-            this.OpenCoordinateFileButton.Location = new System.Drawing.Point(406, 26);
+            this.OpenCoordinateFileButton.Location = new System.Drawing.Point(406, 25);
             this.OpenCoordinateFileButton.Name = "OpenCoordinateFileButton";
             this.OpenCoordinateFileButton.Size = new System.Drawing.Size(75, 23);
             this.OpenCoordinateFileButton.TabIndex = 33;
@@ -294,47 +330,11 @@
             // 
             // CoordinateFileNameTextBox
             // 
-            this.CoordinateFileNameTextBox.Location = new System.Drawing.Point(90, 26);
+            this.CoordinateFileNameTextBox.Location = new System.Drawing.Point(90, 25);
             this.CoordinateFileNameTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CoordinateFileNameTextBox.Name = "CoordinateFileNameTextBox";
             this.CoordinateFileNameTextBox.Size = new System.Drawing.Size(310, 23);
             this.CoordinateFileNameTextBox.TabIndex = 32;
-            // 
-            // ParametersTextBox
-            // 
-            this.ParametersTextBox.Location = new System.Drawing.Point(79, 90);
-            this.ParametersTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ParametersTextBox.Name = "ParametersTextBox";
-            this.ParametersTextBox.Size = new System.Drawing.Size(113, 23);
-            this.ParametersTextBox.TabIndex = 26;
-            this.ParametersTextBox.Text = ",,,,,,";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(10, 93);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(56, 17);
-            this.label7.TabIndex = 27;
-            this.label7.Text = "转换参数";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(207, 93);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(68, 17);
-            this.label10.TabIndex = 29;
-            this.label10.Text = "标识字段名";
-            // 
-            // IdentifierFieldNameTextBox
-            // 
-            this.IdentifierFieldNameTextBox.Location = new System.Drawing.Point(281, 90);
-            this.IdentifierFieldNameTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.IdentifierFieldNameTextBox.Name = "IdentifierFieldNameTextBox";
-            this.IdentifierFieldNameTextBox.Size = new System.Drawing.Size(105, 23);
-            this.IdentifierFieldNameTextBox.TabIndex = 28;
-            this.IdentifierFieldNameTextBox.Text = "地块编号";
             // 
             // MainForm
             // 

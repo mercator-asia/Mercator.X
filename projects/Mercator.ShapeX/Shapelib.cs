@@ -573,6 +573,50 @@ namespace Mercator.ShapeX
         }
 
         /// <summary>
+        /// xBase字段
+        /// </summary>
+        public class DBFField
+        {
+            /// <summary>
+            /// 字段名
+            /// </summary>
+            public string Name;
+            /// <summary>
+            /// 字段类型
+            /// </summary>
+            public DBFFieldType Type;
+            /// <summary>
+            /// 宽度
+            /// </summary>
+            public int Width;
+            /// <summary>
+            /// 小数位数
+            /// </summary>
+            public int Decimals;
+            /// <summary>
+            /// 字段描述
+            /// </summary>
+            public string Description;
+
+            /// <summary>
+            /// 新建字段
+            /// </summary>
+            /// <param name="name">字段名</param>
+            /// <param name="type">字段类型</param>
+            /// <param name="width">宽度</param>
+            /// <param name="decimals">小数位数</param>
+            /// <param name="description">字段描述</param>
+            public DBFField(string name, DBFFieldType type, int width, int decimals, string description="")
+            {
+                Name = name;
+                Type = type;
+                Width = width;
+                Decimals = decimals;
+                Description = description;
+            }
+        }
+
+        /// <summary>
         /// xBase field type enumeration
         /// </summary>
         public enum DBFFieldType
@@ -607,6 +651,12 @@ namespace Mercator.ShapeX
         [DllImport("shapelib_x86.dll", CharSet = CharSet.Ansi, EntryPoint = "DBFOpen", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr DBFOpen32(string szDBFFile, string szAccess);
 
+        /// <summary>
+        /// 打开DBF文件
+        /// </summary>
+        /// <param name="szDBFFile">DBF文件名</param>
+        /// <param name="szAccess">只读/读写（"rb"/"rb+"）</param>
+        /// <returns>IntPtr</returns>
         public static IntPtr DBFOpen(string szDBFFile, string szAccess)
         {
             if (IntPtr.Size == 4)
@@ -1284,15 +1334,33 @@ namespace Mercator.ShapeX
         /// <param name="padfX"></param>
         /// <param name="padfY"></param>
         /// <returns></returns>
-        public static double SHPCalculateArea(double[] padfX, double[] padfY)
+        public static double SHPCalculateArea(IntPtr hSHP, int iShape)
         {
-            if(padfX.Length<=0 || padfY.Length<=0 || padfX.Length!= padfY.Length) { return 0; }
+            // SHPObject对象
+            Shapelib.SHPObject shpObject = new Shapelib.SHPObject();
+            // 读取SHPObject对象指针并将其转换为SHPObject对象
+            Marshal.PtrToStructure(Shapelib.SHPReadObject(hSHP, iShape), shpObject);
+
+            // 顶点数
+            int nVertices = shpObject.nVertices;
+
+            // 顶点的X坐标数组
+            var padfX = new double[nVertices];
+            // 将顶点的X坐标数组指针转换为数组
+            Marshal.Copy(shpObject.padfX, padfX, 0, nVertices);
+            // 顶点的Y坐标数组
+            var padfY = new double[nVertices];
+            // 将顶点的Y坐标数组指针转换为数组
+            Marshal.Copy(shpObject.padfY, padfY, 0, nVertices);
+
+            if (padfX.Length<=0 || padfY.Length<=0 || padfX.Length!= padfY.Length) { return 0; }
 
             var points = new List<Coordinate>();
             for (int i = 0; i < padfX.Length; i++) { points.Add(new Coordinate(padfY[i], padfX[i])); }
             double entityArea = Math.Abs(points.Take(points.Count - 1)
                         .Select((p, i) => (points[i + 1].X - p.X) * (points[i + 1].Y + p.Y))
                         .Sum() / 2);
+
             return entityArea;
         }
 
@@ -1370,8 +1438,14 @@ namespace Mercator.ShapeX
 
                 int iField = DBFGetFieldIndex(hDBF, identifierFieldName);
                 string entityName = DBFReadStringAttribute(hDBF, iShape, iField);
-                double entityArea = SHPCalculateArea(padfX, padfY);
 
+                var points = new List<Coordinate>();
+                for (int i = 0; i < padfX.Length; i++) { points.Add(new Coordinate(padfY[i], padfX[i])); }
+                double entityArea = Math.Abs(points.Take(points.Count - 1)
+                            .Select((p, i) => (points[i + 1].X - p.X) * (points[i + 1].Y + p.Y))
+                            .Sum() / 2);
+
+                // 界址点数,地块面积,地块编号,地块名称,记录图形属性(点、线、面),图幅号,地块用途,地类编码,@
                 m_streamWriter.WriteLine(string.Format("{0},{1:0.0000},{2},{3},面,,,,@", nVertices - 1, Math.Round(entityArea / 10000d, 4), iShape + 1, entityName));
                 // 写入坐标
                 for (int i = 0; i < nVertices - 1; i++)

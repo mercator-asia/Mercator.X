@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mercator.OfficeX", "project
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mercator.ShapeX", "projects\Mercator.ShapeX\Mercator.ShapeX.csproj", "{E6AEA20F-665B-4E02-BA6C-CE9CEAD0ABE7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mercator.Evaluate.Studio", "projects\Mercator.Evaluate.Studio\Mercator.Evaluate.Studio.csproj", "{545D1CCE-1F66-4588-BDD1-A5B41E9F5765}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{E6AEA20F-665B-4E02-BA6C-CE9CEAD0ABE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6AEA20F-665B-4E02-BA6C-CE9CEAD0ABE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E6AEA20F-665B-4E02-BA6C-CE9CEAD0ABE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{545D1CCE-1F66-4588-BDD1-A5B41E9F5765}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{545D1CCE-1F66-4588-BDD1-A5B41E9F5765}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{545D1CCE-1F66-4588-BDD1-A5B41E9F5765}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{545D1CCE-1F66-4588-BDD1-A5B41E9F5765}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

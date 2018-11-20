@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Configuration>
+  <XJFDDY>
+    <DBFField Name="SF" Type="FTString" Width="32" Decimals="0" Description="省份"></DBFField>
+    <DBFField Name="S" Type="FTString" Width="32" Decimals="0" Description="市"></DBFField>
+    <DBFField Name="X" Type="FTString" Width="32" Decimals="0" Description="县"></DBFField>
+    <DBFField Name="GJGZZD" Type="FTString" Width="32" Decimals="0" Description="国家级标准耕作制度"></DBFField>
+    <DBFField Name="SZ" Type="FTString" Width="8" Decimals="0" Description="熟制"></DBFField>
+    <DBFField Name="YJQMC" Type="FTString" Width="64" Decimals="0" Description="一级区名称"></DBFField>
+    <DBFField Name="EJQMC" Type="FTString" Width="64" Decimals="0" Description="二级区名称"></DBFField>
+    <DBFField Name="SJQMC" Type="FTString" Width="64" Decimals="0" Description="三级区名称"></DBFField>
+    <DBFField Name="DLDM" Type="FTString" Width="4" Decimals="0" Description="地类代码"></DBFField>
+    <DBFField Name="JZZWMC" Type="FTString" Width="8" Decimals="0" Description="基准作物名称"></DBFField>
+    <DBFField Name="JZGWZS" Type="FTInteger" Width="4" Decimals="0" Description="基准作物光温生产潜力指数"></DBFField>
+    <DBFField Name="JZQHZS" Type="FTInteger" Width="4" Decimals="0" Description="基准作物气候生产潜力指数"></DBFField>
+    <DBFField Name="JZZWF" Type="FTDouble" Width="4" Decimals="3" Description="基准作物自然质量分"></DBFField>
+    <DBFField Name="ZDZW1MC" Type="FTString" Width="8" Decimals="0" Description="指定作物1名称"></DBFField>
+    <DBFField Name="ZDZW1GW" Type="FTInteger" Width="4" Decimals="0" Description="指定作物1光温生产潜力指数"></DBFField>
+    <DBFField Name="ZDZW1QH" Type="FTInteger" Width="4" Decimals="0" Description="指定作物1气候生产潜力指数"></DBFField>
+    <DBFField Name="ZDZW1F" Type="FTDouble" Width="4" Decimals="3" Description="指定作物1自然质量分"></DBFField>
+    <DBFField Name="ZDZW1B" Type="FTDouble" Width="8" Decimals="2" Description="指定作物1产量比系数"></DBFField>
+    <DBFField Name="ZDZW2MC" Type="FTString" Width="8" Decimals="0" Description="指定作物2名称"></DBFField>
+    <DBFField Name="ZDZW2GW" Type="FTInteger" Width="4" Decimals="0" Description="指定作物2光温生产潜力指数"></DBFField>
+    <DBFField Name="ZDZW2QH" Type="FTInteger" Width="4" Decimals="0" Description="指定作物2气候生产潜力指数"></DBFField>
+    <DBFField Name="ZDZW2F" Type="FTDouble" Width="4" Decimals="3" Description="指定作物2自然质量分"></DBFField>
+    <DBFField Name="ZDZW2B" Type="FTDouble" Width="8" Decimals="2" Description="指定作物2产量比系数"></DBFField>
+    <DBFField Name="ZHZLF" Type="FTDouble" Width="8" Decimals="3" Description="综合自然质量分"></DBFField>
+    <DBFField Name="ZRDZS" Type="FTInteger" Width="8" Decimals="0" Description="自然等指数"></DBFField>
+    <DBFField Name="ZRDB" Type="FTInteger" Width="4" Decimals="0" Description="自然质量等别"></DBFField>
+    <DBFField Name="TDLYXS" Type="FTDouble" Width="8" Decimals="4" Description="土地利用系数"></DBFField>
+    <DBFField Name="LYDZS" Type="FTInteger" Width="8" Decimals="0" Description="利用等指数"></DBFField>
+    <DBFField Name="LYD" Type="FTInteger" Width="4" Decimals="0" Description="利用等别"></DBFField>
+    <DBFField Name="TDJJXS" Type="FTDouble" Width="8" Decimals="4" Description="土地经济系数"></DBFField>
+    <DBFField Name="DBZ" Type="FTInteger" Width="8" Decimals="0" Description="等别指数"></DBFField>
+    <DBFField Name="DB" Type="FTInteger" Width="4" Decimals="0" Description="等别"></DBFField>
+    <DBFField Name="ZRDMJ" Type="FTDouble" Width="16" Decimals="2" Description="图斑面积"></DBFField>
+    <DBFField Name="GJZRDZS" Type="FTInteger" Width="8" Decimals="0" Description="国家级自然等指数"></DBFField>
+    <DBFField Name="GJZRDB" Type="FTInteger" Width="4" Decimals="0" Description="国家级自然质量等别"></DBFField>
+    <DBFField Name="GJLYDZS" Type="FTInteger" Width="8" Decimals="0" Description="国家级利用等指数"></DBFField>
+    <DBFField Name="GJLYDB" Type="FTInteger" Width="4" Decimals="0" Description="国家级利用等别"></DBFField>
+    <DBFField Name="GJDBZS" Type="FTInteger" Width="8" Decimals="0" Description="国家级等别指数"></DBFField>
+    <DBFField Name="GJDB" Type="FTInteger" Width="4" Decimals="0" Description="国家级等别"></DBFField>
+    <DBFField Name="YXTCHD" Type="FTInteger" Width="3" Decimals="0" Description="有效土层厚度"></DBFField>
+    <DBFField Name="BCTRZD" Type="FTString" Width="6" Decimals="0" Description="表层土壤质地"></DBFField>
+    <DBFField Name="PMGX" Type="FTString" Width="20" Decimals="0" Description="剖面构型"></DBFField>
+    <DBFField Name="TRYJZHL" Type="FTInteger" Width="1" Decimals="0" Description="土壤有机质含量"></DBFField>
+    <DBFField Name="TRSJD" Type="FTInteger" Width="1" Decimals="0" Description="土壤PH值"></DBFField>
+    <DBFField Name="ZACJDBSD" Type="FTDouble" Width="7" Decimals="2" Description="障碍层距地表深度"></DBFField>
+    <DBFField Name="PSTJ" Type="FTInteger" Width="1" Decimals="0" Description="排水条件"></DBFField>
+    <DBFField Name="DXPD" Type="FTDouble" Width="7" Decimals="2" Description="地形坡度"></DBFField>
+    <DBFField Name="GGBZL" Type="FTString" Width="10" Decimals="0" Description="灌溉保证率"></DBFField>
+    <DBFField Name="DBYSLTD" Type="FTInteger" Width="1" Decimals="0" Description="地表岩石出露度"></DBFField>
+  </XJFDDY>
+</Configuration>
