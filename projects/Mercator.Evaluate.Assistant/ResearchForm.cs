@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Mercator.Evaluate.Studio
+namespace Mercator.Evaluate.Assistant
 {
     public partial class ResearchForm : Form
     {

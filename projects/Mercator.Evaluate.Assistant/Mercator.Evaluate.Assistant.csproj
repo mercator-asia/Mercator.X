@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{545D1CCE-1F66-4588-BDD1-A5B41E9F5765}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Mercator.Evaluate.Studio</RootNamespace>
-    <AssemblyName>Mercator.Evaluate.Studio</AssemblyName>
+    <RootNamespace>Mercator.Evaluate.Assistant</RootNamespace>
+    <AssemblyName>Mercator.Evaluate.Assistant</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -97,6 +97,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Database\Evaluate.db">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Data.SQLite;
 
-namespace Mercator.Evaluate.Studio
+namespace Mercator.Evaluate.Assistant
 {
     public class Patch
     {

@@ -1,4 +1,4 @@
-﻿namespace Mercator.Evaluate.Studio
+﻿namespace Mercator.Evaluate.Assistant
 {
     partial class ResearchForm
     {

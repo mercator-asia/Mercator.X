@@ -1,4 +1,4 @@
-﻿namespace Mercator.CoordinateX
+﻿namespace Mercator.Coordinate.Assistant
 {
     partial class MainForm
     {

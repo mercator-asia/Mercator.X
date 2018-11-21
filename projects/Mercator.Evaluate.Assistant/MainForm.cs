@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Xml;
 
-namespace Mercator.Evaluate.Studio
+namespace Mercator.Evaluate.Assistant
 {
     public partial class MainForm : Form
     {
@@ -459,7 +459,7 @@ namespace Mercator.Evaluate.Studio
 
             Shapelib.DBFClose(hDBF);
 
-            MessageBox.Show("成功添加 自定义 字段。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("成功添加 评定辅助 字段。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void SaveLayerAsMenuItem_Click(object sender, EventArgs e)

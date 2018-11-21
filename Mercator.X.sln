@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2016
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mercator.CoordinateX", "projects\Mercator.CoordinateX\Mercator.CoordinateX.csproj", "{A13A4931-1751-40D2-94FE-B2D42C436B02}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mercator.ExcelX", "projects\Mercator.ExcelX\Mercator.ExcelX.csproj", "{C4E4D4D2-5576-4DBF-A905-37788165305B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mercator.OfficeX", "projects\Mercator.OfficeX\Mercator.OfficeX.csproj", "{E0E03B15-4178-4B02-B3D1-82BC0091DA47}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mercator.ShapeX", "projects\Mercator.ShapeX\Mercator.ShapeX.csproj", "{E6AEA20F-665B-4E02-BA6C-CE9CEAD0ABE7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mercator.Evaluate.Studio", "projects\Mercator.Evaluate.Studio\Mercator.Evaluate.Studio.csproj", "{545D1CCE-1F66-4588-BDD1-A5B41E9F5765}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mercator.Coordinate.Assistant", "projects\Mercator.Coordinate.Assistant\Mercator.Coordinate.Assistant.csproj", "{A13A4931-1751-40D2-94FE-B2D42C436B02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mercator.Evaluate.Assistant", "projects\Mercator.Evaluate.Assistant\Mercator.Evaluate.Assistant.csproj", "{545D1CCE-1F66-4588-BDD1-A5B41E9F5765}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,10 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A13A4931-1751-40D2-94FE-B2D42C436B02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A13A4931-1751-40D2-94FE-B2D42C436B02}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A13A4931-1751-40D2-94FE-B2D42C436B02}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A13A4931-1751-40D2-94FE-B2D42C436B02}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C4E4D4D2-5576-4DBF-A905-37788165305B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C4E4D4D2-5576-4DBF-A905-37788165305B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4E4D4D2-5576-4DBF-A905-37788165305B}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -35,6 +31,10 @@ Global
 		{E6AEA20F-665B-4E02-BA6C-CE9CEAD0ABE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6AEA20F-665B-4E02-BA6C-CE9CEAD0ABE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E6AEA20F-665B-4E02-BA6C-CE9CEAD0ABE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A13A4931-1751-40D2-94FE-B2D42C436B02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A13A4931-1751-40D2-94FE-B2D42C436B02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A13A4931-1751-40D2-94FE-B2D42C436B02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A13A4931-1751-40D2-94FE-B2D42C436B02}.Release|Any CPU.Build.0 = Release|Any CPU
 		{545D1CCE-1F66-4588-BDD1-A5B41E9F5765}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{545D1CCE-1F66-4588-BDD1-A5B41E9F5765}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{545D1CCE-1F66-4588-BDD1-A5B41E9F5765}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -3,7 +3,7 @@ using Mercator.OfficeX;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Mercator.Evaluate.Studio
+namespace Mercator.Evaluate.Assistant
 {
     public class EvaluateTemplateHandler : TemplateHandler
     {

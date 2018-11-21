@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("Mercator.CoordinateX")]
+[assembly: AssemblyTitle("Mercator.Evaluate.Assistant")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Mercator.CoordinateX")]
+[assembly: AssemblyProduct("Mercator.Evaluate.Assistant")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("a13a4931-1751-40d2-94fe-b2d42c436b02")]
+[assembly: Guid("545d1cce-1f66-4588-bdd1-a5b41e9f5765")]
 
 // 程序集的版本信息由下列四个值组成: 
 //

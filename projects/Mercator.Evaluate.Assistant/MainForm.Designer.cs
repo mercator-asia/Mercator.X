@@ -1,4 +1,4 @@
-﻿namespace Mercator.Evaluate.Studio
+﻿namespace Mercator.Evaluate.Assistant
 {
     partial class MainForm
     {
@@ -98,20 +98,20 @@
             this.OpenShpMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("OpenShpMenuItem.Image")));
             this.OpenShpMenuItem.Name = "OpenShpMenuItem";
             this.OpenShpMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.OpenShpMenuItem.Size = new System.Drawing.Size(174, 22);
-            this.OpenShpMenuItem.Text = "打开(&O)...";
+            this.OpenShpMenuItem.Size = new System.Drawing.Size(246, 22);
+            this.OpenShpMenuItem.Text = "打开评价单元图层(&O)...";
             this.OpenShpMenuItem.Click += new System.EventHandler(this.OpenShpMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(171, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(243, 6);
             // 
             // 关闭CToolStripMenuItem
             // 
             this.关闭CToolStripMenuItem.Name = "关闭CToolStripMenuItem";
-            this.关闭CToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
-            this.关闭CToolStripMenuItem.Text = "关闭(&C)";
+            this.关闭CToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
+            this.关闭CToolStripMenuItem.Text = "关闭评价单元图层(&C)";
             this.关闭CToolStripMenuItem.Click += new System.EventHandler(this.CloseShpMenuItem_Click);
             // 
             // 评定EToolStripMenuItem
@@ -149,9 +149,9 @@
             // 
             this.字段FToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.添加土地利用水平评价指标字段UToolStripMenuItem,
-            this.添加产量成本属性AToolStripMenuItem,
             this.toolStripMenuItem2,
-            this.IndexTypeMenuItem});
+            this.IndexTypeMenuItem,
+            this.添加产量成本属性AToolStripMenuItem});
             this.字段FToolStripMenuItem.Name = "字段FToolStripMenuItem";
             this.字段FToolStripMenuItem.Size = new System.Drawing.Size(58, 21);
             this.字段FToolStripMenuItem.Text = "设置(&F)";
@@ -160,7 +160,7 @@
             // 
             this.添加土地利用水平评价指标字段UToolStripMenuItem.Name = "添加土地利用水平评价指标字段UToolStripMenuItem";
             this.添加土地利用水平评价指标字段UToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
-            this.添加土地利用水平评价指标字段UToolStripMenuItem.Text = "添加 自定义 字段(&U)";
+            this.添加土地利用水平评价指标字段UToolStripMenuItem.Text = "添加 评定辅助 字段(&U)";
             this.添加土地利用水平评价指标字段UToolStripMenuItem.Click += new System.EventHandler(this.AddCustomFieldsMenuItem_Click);
             // 
             // 添加产量成本属性AToolStripMenuItem

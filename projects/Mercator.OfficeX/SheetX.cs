@@ -1,5 +1,4 @@
 ﻿using NPOI.HSSF.UserModel;
-using NPOI.HSSF.Util;
 using NPOI.SS.UserModel;
 using NPOI.SS.Util;
 using NPOI.XSSF.UserModel;
@@ -7,10 +6,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace Mercator.OfficeX
 {
@@ -149,7 +145,7 @@ namespace Mercator.OfficeX
                 }
             }
 
-            if (cellStyleIndex < 0)
+            if (cellStyleIndex < 0 && workbook.NumCellStyles <= 4000)
             {
                 ICellStyle newCellStyle = workbook.CreateCellStyle();
                 newCellStyle.CloneStyleFrom(cell.CellStyle);
