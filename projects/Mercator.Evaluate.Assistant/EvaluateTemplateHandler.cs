@@ -19,7 +19,9 @@ namespace Mercator.Evaluate.Assistant
         /// <returns></returns>
         private CellData[,] Evaluate(List<Patch> patches, bool indexType)
         {
-            var data = new CellData[patches.Count, 53];
+            var data = new CellData[patches.Count + 1, 53];
+
+            var area = 0d;
 
             int i = 0;
 
@@ -116,10 +118,10 @@ namespace Mercator.Evaluate.Assistant
                     data[i, 39] = new CellData(score2, "0.0");
 
                     utilizationCoefficient = SQLiteHelper.CalculateUtilizationCoefficient(patch.UtilizationCoefficient, score1, score2);
-                }
-                
 
-                data[i, 40] = new CellData(utilizationCoefficient, "0.000");
+                    data[i, 40] = new CellData(utilizationCoefficient, "0.000");
+                }
+
                 data[i, 41] = new CellData(SQLiteHelper.GetUtilizationCoefficient(patch.County, utilizationCoefficient), "0.000");
                 data[i, 42] = new CellData(SQLiteHelper.GetEconomicalCoefficient(patch.County, patch.EconomicalCoefficient), "0.000");
 
@@ -150,8 +152,24 @@ namespace Mercator.Evaluate.Assistant
                 cellFontGreen.IsBold = true;
                 data[i, 51] = new CellData(patch.StateEconomicalGrade, "0", cellFontGreen);
 
+                area += patch.Area;
+
                 i++;
             }
+
+
+            double zrd=0d, lyd=0d, jjd=0d;
+            for (int j = 0; j < i; j++)
+            {
+                zrd += data[j, 49].NumericalValue * data[j, 52].NumericalValue / area;
+                lyd += data[j, 50].NumericalValue * data[j, 52].NumericalValue / area;
+                jjd += data[j, 51].NumericalValue * data[j, 52].NumericalValue / area;
+            }
+
+            data[i, 49] = new CellData(zrd, "0.0");
+            data[i, 50] = new CellData(lyd, "0.0");
+            data[i, 51] = new CellData(lyd, "0.0");
+            data[i, 52] = new CellData(area, "0.0000");
 
             return data;
         }

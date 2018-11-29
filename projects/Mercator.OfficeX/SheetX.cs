@@ -121,10 +121,8 @@ namespace Mercator.OfficeX
                     && cellStyle.BorderRight == cell.CellStyle.BorderRight
                     && cellStyle.BorderTop == cell.CellStyle.BorderTop
                     && cellStyle.BottomBorderColor == cell.CellStyle.BottomBorderColor
-                    && cellStyle.FillBackgroundColor == cell.CellStyle.FillBackgroundColor
-                    && cellStyle.FillBackgroundColorColor == cell.CellStyle.FillBackgroundColorColor
-                    && cellStyle.FillForegroundColor == cell.CellStyle.FillForegroundColor
-                    && cellStyle.FillForegroundColorColor == cell.CellStyle.FillForegroundColorColor
+                    && cellStyle.FillBackgroundColor == cell.CellStyle.FillBackgroundColor      // 背景色
+                    && cellStyle.FillForegroundColor == cell.CellStyle.FillForegroundColor      // 前景色（由于Excel不能准确转换颜色，仅支持0和255组合的基本色）
                     && cellStyle.FillPattern == cell.CellStyle.FillPattern
                     && cellStyle.Indention == cell.CellStyle.Indention
                     && cellStyle.IsHidden == cell.CellStyle.IsHidden
@@ -171,21 +169,9 @@ namespace Mercator.OfficeX
             IWorkbook workbook = cell.Sheet.Workbook;
 
             if (!string.IsNullOrEmpty(dataFormat))
-            {
-                short builtinFormat = HSSFDataFormat.GetBuiltinFormat(dataFormat);
-                if (builtinFormat < 0)
-                {
-                    expectedDataFormat = workbook.CreateDataFormat().GetFormat(dataFormat);
-                }
-                else
-                {
-                    expectedDataFormat = builtinFormat;
-                }
-            }
+                expectedDataFormat = workbook.CreateDataFormat().GetFormat(dataFormat);
             else
-            {
                 expectedDataFormat = cell.CellStyle.DataFormat;
-            }
 
             return expectedDataFormat;
         }
