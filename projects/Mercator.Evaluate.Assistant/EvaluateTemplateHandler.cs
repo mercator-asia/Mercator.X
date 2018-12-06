@@ -122,6 +122,8 @@ namespace Mercator.Evaluate.Assistant
                     data[i, 40] = new CellData(utilizationCoefficient, "0.000");
                 }
 
+                if (double.IsInfinity(utilizationCoefficient)) { continue; }
+
                 data[i, 41] = new CellData(SQLiteHelper.GetUtilizationCoefficient(patch.County, utilizationCoefficient), "0.000");
                 data[i, 42] = new CellData(SQLiteHelper.GetEconomicalCoefficient(patch.County, patch.EconomicalCoefficient), "0.000");
 
