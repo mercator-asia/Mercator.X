@@ -440,7 +440,7 @@ namespace Mercator.OfficeX
                 row2 = dimension.LastRowIndex;
             }
 
-            IDrawing drawingPatriarch = cell.Sheet.DrawingPatriarch != null ? cell.Sheet.DrawingPatriarch : cell.Sheet.CreateDrawingPatriarch();
+            IDrawing drawingPatriarch = cell.Sheet.DrawingPatriarch ?? cell.Sheet.CreateDrawingPatriarch();
             IClientAnchor clientAnchor = GetClientAnchor(workbook, dx1, dy1, dx2, dy2, col1, row1, col2, row2);
             int pictureIndex = workbook.AddPicture(pictureData, format);
             IPicture picture = drawingPatriarch.CreatePicture(clientAnchor, pictureIndex);
@@ -912,7 +912,7 @@ namespace Mercator.OfficeX
                 return _DataType;
             }
         }
-        private CellDataType _DataType;
+        readonly CellDataType _DataType;
 
         /// <summary>
         /// 字体
@@ -1245,7 +1245,7 @@ namespace Mercator.OfficeX
                 return _IsUnderlineTypeChanged;
             }
         }
-        private bool _IsUnderlineTypeChanged = false;
+        readonly bool _IsUnderlineTypeChanged = false;
 
         /// <summary>
         /// 上下标
@@ -1455,12 +1455,14 @@ namespace Mercator.OfficeX
         {
             input = Regex.Replace(input, @"\s", "");
             var result = false;
-            var patterns = new List<string>();
-            patterns.Add(@"^[\{]\S+[\}]\.[\[](文本)[\]]");
-            patterns.Add(@"^[\{]\S+[\}]\.[\[](日期)[\]]");
-            patterns.Add(@"^[\{]\S+[\}]\.[\[](数字)[\]]");
-            patterns.Add(@"^[\{]\S+[\}]\.[\[](图片)[\]]");
-            patterns.Add(@"^[\{]\S+[\}]\.[\[](表格)[\]]");
+            var patterns = new List<string>()
+            {
+                @"^[\{]\S+[\}]\.[\[](文本)[\]]",
+                @"^[\{]\S+[\}]\.[\[](日期)[\]]",
+                @"^[\{]\S+[\}]\.[\[](数字)[\]]",
+                @"^[\{]\S+[\}]\.[\[](图片)[\]]",
+                @"^[\{]\S+[\}]\.[\[](表格)[\]]"
+            };
 
             foreach (var pattern in patterns)
             {

@@ -180,28 +180,16 @@ namespace Mercator.Evaluate.Assistant
 
             for (int iShape = 0; iShape < recordCount; iShape++)
             {
-                var patch = new Patch();
-
-                // 图斑编号/名称
-                patch.Name = Shapelib.DBFReadAnsiStringAttribute(hDBF, iShape, Shapelib.DBFGetFieldIndex(hDBF, "XJDYBH"));
-
-                // 指标区
-                patch.ThirdIndexRegion = Shapelib.DBFReadAnsiStringAttribute(hDBF, iShape, Shapelib.DBFGetFieldIndex(hDBF, "SJQMC"));
-
-                // 县
-                patch.County = Shapelib.DBFReadAnsiStringAttribute(hDBF, iShape, Shapelib.DBFGetFieldIndex(hDBF, "X"));
-
-                // 地类
-                patch.ClassCode = Shapelib.DBFReadStringAttribute(hDBF, iShape, Shapelib.DBFGetFieldIndex(hDBF, "DLDM"));
-
-                // 面积
-                patch.Area = Shapelib.DBFReadDoubleAttribute(hDBF, iShape, Shapelib.DBFGetFieldIndex(hDBF, "ZRDMJ"));
-
-                // 土地利用系数
-                patch.UtilizationCoefficient = Shapelib.DBFReadDoubleAttribute(hDBF, iShape, Shapelib.DBFGetFieldIndex(hDBF, "TDLYXS"));
-
-                // 土地经济系数
-                patch.EconomicalCoefficient = Shapelib.DBFReadDoubleAttribute(hDBF, iShape, Shapelib.DBFGetFieldIndex(hDBF, "TDJJXS"));
+                var patch = new Patch()
+                {
+                    Name = Shapelib.DBFReadAnsiStringAttribute(hDBF, iShape, Shapelib.DBFGetFieldIndex(hDBF, "XJDYBH")),
+                    ThirdIndexRegion = Shapelib.DBFReadAnsiStringAttribute(hDBF, iShape, Shapelib.DBFGetFieldIndex(hDBF, "SJQMC")),
+                    County = Shapelib.DBFReadAnsiStringAttribute(hDBF, iShape, Shapelib.DBFGetFieldIndex(hDBF, "X")),
+                    ClassCode = Shapelib.DBFReadStringAttribute(hDBF, iShape, Shapelib.DBFGetFieldIndex(hDBF, "DLDM")),
+                    Area = Shapelib.DBFReadDoubleAttribute(hDBF, iShape, Shapelib.DBFGetFieldIndex(hDBF, "ZRDMJ")),
+                    UtilizationCoefficient = Shapelib.DBFReadDoubleAttribute(hDBF, iShape, Shapelib.DBFGetFieldIndex(hDBF, "TDLYXS")),
+                    EconomicalCoefficient = Shapelib.DBFReadDoubleAttribute(hDBF, iShape, Shapelib.DBFGetFieldIndex(hDBF, "TDJJXS"))
+                };
 
                 // 是否为新增耕地
                 var iField = Shapelib.DBFGetFieldIndex(hDBF, "SFXZGD");
@@ -318,8 +306,7 @@ namespace Mercator.Evaluate.Assistant
 
         private void OpenShpMenuItem_Click(object sender, EventArgs e)
         {
-            var dialog = new OpenFileDialog();
-            dialog.Filter = "Shp文件(*.shp)|*.shp";
+            var dialog = new OpenFileDialog() { Filter = "Shp文件(*.shp)|*.shp" };
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 if (!OpenShpBGWorker.IsBusy)
@@ -342,8 +329,7 @@ namespace Mercator.Evaluate.Assistant
         {
             if (_patches.Count <= 0) { return; }
 
-            var dialog = new SaveFileDialog();
-            dialog.Filter = "Excel文件(*.xls)|*.xls";
+            var dialog = new SaveFileDialog() { Filter = "Excel文件(*.xls)|*.xls" };
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 if (!SaveXlsBGWorker.IsBusy)
@@ -582,8 +568,7 @@ namespace Mercator.Evaluate.Assistant
                 Shapelib.SHPClose(hSHP);
             }
 
-            var dialog = new SaveFileDialog();
-            dialog.Filter = "Shp文件(*.shp)|*.shp";
+            var dialog = new SaveFileDialog() { Filter = "Shp文件(*.shp)|*.shp" };
             dialog.AddExtension = true;
             if (dialog.ShowDialog()== DialogResult.OK)
             {
@@ -687,6 +672,11 @@ namespace Mercator.Evaluate.Assistant
                     }
                 }
             }
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            toolStripStatusLabel2.Text = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
         }
     }
 }

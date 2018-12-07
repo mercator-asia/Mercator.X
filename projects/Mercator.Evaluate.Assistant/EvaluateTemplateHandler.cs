@@ -42,9 +42,8 @@ namespace Mercator.Evaluate.Assistant
                 data[i, 11] = new CellData(GetFactorValue(patch, "灌溉保证率"));
                 data[i, 12] = new CellData(GetFactorValue(patch, "地表岩石出露度"));
 
-                string formula;
                 var PP = 0d;
-                var score = SQLiteHelper.CalculateCropNaturalQualityScore(patch, patch.Crops[0].Name,out formula);
+                var score = SQLiteHelper.CalculateCropNaturalQualityScore(patch, patch.Crops[0].Name,out string formula);
                 var index = 0d;
                 var ratio = patch.Crops[0].GOCCoefficient;
 
@@ -146,19 +145,25 @@ namespace Mercator.Evaluate.Assistant
 
                 data[i, 52] = new CellData(patch.Area, "0.0000");
 
-                var cellFontBlue = new CellFont();
-                cellFontBlue.Color = CellFont.GetColorIndex(FontColor.Blue);
-                cellFontBlue.IsBold = true;
+                var cellFontBlue = new CellFont()
+                {
+                    Color = CellFont.GetColorIndex(FontColor.Blue),
+                    IsBold = true
+                };
                 data[i, 49] = new CellData(patch.StateNaturalQualityGrade, "0", cellFontBlue);
 
-                var cellFontRed = new CellFont();
-                cellFontRed.Color = CellFont.GetColorIndex(FontColor.Red);
-                cellFontRed.IsBold = true;
+                var cellFontRed = new CellFont()
+                {
+                    Color = CellFont.GetColorIndex(FontColor.Red),
+                    IsBold = true
+                };
                 data[i, 50] = new CellData(patch.StateUtilizationGrade, "0", cellFontRed);
 
-                var cellFontGreen = new CellFont();
-                cellFontGreen.Color = CellFont.GetColorIndex(FontColor.Green);
-                cellFontGreen.IsBold = true;
+                var cellFontGreen = new CellFont()
+                {
+                    Color = CellFont.GetColorIndex(FontColor.Green),
+                    IsBold = true
+                };
                 data[i, 51] = new CellData(patch.StateEconomicalGrade, "0", cellFontGreen);
 
                 i++;
@@ -245,7 +250,6 @@ namespace Mercator.Evaluate.Assistant
         /// </summary>
         /// <param name="xlsFileName">评定结果文件（.xls）</param>
         /// <param name="patches">评价单元集合</param>
-        /// <param name="indexType">是否使用气候指数计算水浇地</param>
         public void ToSheet(string xlsFileName, List<Patch> patches)
         {
             // 获得填充了数据的占位符集合
