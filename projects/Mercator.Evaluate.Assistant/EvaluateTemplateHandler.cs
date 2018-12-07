@@ -186,13 +186,13 @@ namespace Mercator.Evaluate.Assistant
             data[i, 48] = new CellData("整理");
             data[i, 49] = new CellData(zrd, "0.0");
             data[i, 50] = new CellData(lyd, "0.0");
-            data[i, 51] = new CellData(lyd, "0.0");
+            data[i, 51] = new CellData(jjd, "0.0");
             data[i, 52] = new CellData(zarea, "0.0000");
 
             data[i + 1, 48] = new CellData("开发");
             data[i + 1, 49] = new CellData(zrd1, "0.0");
             data[i + 1, 50] = new CellData(lyd1, "0.0");
-            data[i + 1, 51] = new CellData(lyd1, "0.0");
+            data[i + 1, 51] = new CellData(jjd1, "0.0");
             data[i + 1, 52] = new CellData(karea, "0.0000");
 
             return data;

@@ -574,8 +574,8 @@ namespace Mercator.Evaluate.Assistant
                     if (iField >= 0) { Shapelib.DBFWriteIntegerAttribute(hDBF, i, iField, _patches[i].StateEconomicalGrade); }
 
                     // 计算图斑面积
-                    iField = Shapelib.DBFGetFieldIndex(hDBF, "ZRDMJ");
-                    if (iField >= 0) { Shapelib.DBFWriteDoubleAttribute(hDBF, i, iField, Shapelib.SHPCalculateArea(hSHP, i)/10000); }
+                    // iField = Shapelib.DBFGetFieldIndex(hDBF, "ZRDMJ");
+                    // if (iField >= 0) { Shapelib.DBFWriteDoubleAttribute(hDBF, i, iField, Shapelib.SHPCalculateArea(hSHP, i)/10000); }
                 }
 
                 Shapelib.DBFClose(hDBF);
