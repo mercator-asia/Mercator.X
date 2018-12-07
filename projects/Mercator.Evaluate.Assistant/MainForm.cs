@@ -207,6 +207,8 @@ namespace Mercator.Evaluate.Assistant
                 var iField = Shapelib.DBFGetFieldIndex(hDBF, "SFXZGD");
                 if (iField >= 0) { patch.IsNew = Convert.ToBoolean(Shapelib.DBFReadIntegerAttribute(hDBF, iShape, iField)); }
 
+                patch.IsCPPC = IndexTypeMenuItem.Checked;
+
                 if (patch.LandClass == "水田")
                 {
                     patch.Crops[0].GrainOutput = Shapelib.DBFReadDoubleAttribute(hDBF, iShape, Shapelib.DBFGetFieldIndex(hDBF, "JZZWCL"));
@@ -364,7 +366,7 @@ namespace Mercator.Evaluate.Assistant
         {
             var xlsFileName = e.Argument.ToString();
             var EvaluateTemplateHandler = new EvaluateTemplateHandler(AppDomain.CurrentDomain.SetupInformation.ApplicationBase + @"Templates\Evaluate.xlt");
-            EvaluateTemplateHandler.ToSheet(xlsFileName, _patches, IndexTypeMenuItem.Checked);
+            EvaluateTemplateHandler.ToSheet(xlsFileName, _patches);
             e.Result = xlsFileName;
         }
 
@@ -531,7 +533,11 @@ namespace Mercator.Evaluate.Assistant
                     var naturalQualityGrade = SQLiteHelper.CalculateNaturalQualityGrade(_patches[i].NaturalQualityGradeIndex);
 
                     SQLiteHelper.CalculateUtilizationScore(_patches[i], out double score1, out string formula1, out double score2, out string formula2);
-                    var utilizationCoefficient = SQLiteHelper.CalculateUtilizationCoefficient(_patches[i].UtilizationCoefficient, score1, score2);
+                    double utilizationCoefficient = _patches[i].UtilizationCoefficient;
+                    if (!_patches[i].IsNew)
+                    {
+                        utilizationCoefficient = SQLiteHelper.CalculateUtilizationCoefficient(_patches[i].UtilizationCoefficient, score1, score2);
+                    }
                     var utilizationGrade = SQLiteHelper.CalculateUtilizationGrade(_patches[i].UtilizationGradeIndex);
 
                     var economicalGrade = SQLiteHelper.CalculateEconomicalGrade(_patches[i].EconomicalGradeIndex);
@@ -569,7 +575,7 @@ namespace Mercator.Evaluate.Assistant
 
                     // 计算图斑面积
                     iField = Shapelib.DBFGetFieldIndex(hDBF, "ZRDMJ");
-                    if (iField >= 0) { Shapelib.DBFWriteDoubleAttribute(hDBF, i, iField, Shapelib.SHPCalculateArea(hSHP, i)); }
+                    if (iField >= 0) { Shapelib.DBFWriteDoubleAttribute(hDBF, i, iField, Shapelib.SHPCalculateArea(hSHP, i)/10000); }
                 }
 
                 Shapelib.DBFClose(hDBF);
@@ -666,6 +672,20 @@ namespace Mercator.Evaluate.Assistant
                 Shapelib.SHPClose(hShp);
 
                 MessageBox.Show(string.Format("成功创建{0}。", shpFileName), "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void IndexTypeMenuItem_CheckedChanged(object sender, EventArgs e)
+        {
+            if(_patches.Count>0)
+            {
+                for(int i=0;i< _patches.Count;i++)
+                {
+                    if(_patches[i].LandClass=="水浇地")
+                    {
+                        _patches[i].IsCPPC = IndexTypeMenuItem.Checked;
+                    }
+                }
             }
         }
     }

@@ -40,20 +40,15 @@
             this.生成上报分等单元图层BToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.字段FToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.添加土地利用水平评价指标字段UToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.添加产量成本属性AToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.IndexTypeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.添加产量成本属性AToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.帮助HToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.新建NToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.打开OToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.保存SToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.打印PToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.剪切UToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.复制CToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.粘贴PToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.帮助LToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.dataGridView = new System.Windows.Forms.DataGridView();
@@ -163,13 +158,6 @@
             this.添加土地利用水平评价指标字段UToolStripMenuItem.Text = "添加 评定辅助 字段(&U)";
             this.添加土地利用水平评价指标字段UToolStripMenuItem.Click += new System.EventHandler(this.AddCustomFieldsMenuItem_Click);
             // 
-            // 添加产量成本属性AToolStripMenuItem
-            // 
-            this.添加产量成本属性AToolStripMenuItem.Name = "添加产量成本属性AToolStripMenuItem";
-            this.添加产量成本属性AToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
-            this.添加产量成本属性AToolStripMenuItem.Text = "添加 产量/成本 属性(&A)";
-            this.添加产量成本属性AToolStripMenuItem.Click += new System.EventHandler(this.SetAttributeMenuItem_Click);
-            // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
@@ -178,10 +166,19 @@
             // IndexTypeMenuItem
             // 
             this.IndexTypeMenuItem.Checked = true;
+            this.IndexTypeMenuItem.CheckOnClick = true;
             this.IndexTypeMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.IndexTypeMenuItem.Name = "IndexTypeMenuItem";
             this.IndexTypeMenuItem.Size = new System.Drawing.Size(208, 22);
             this.IndexTypeMenuItem.Text = "使用气候指数计算水浇地";
+            this.IndexTypeMenuItem.CheckedChanged += new System.EventHandler(this.IndexTypeMenuItem_CheckedChanged);
+            // 
+            // 添加产量成本属性AToolStripMenuItem
+            // 
+            this.添加产量成本属性AToolStripMenuItem.Name = "添加产量成本属性AToolStripMenuItem";
+            this.添加产量成本属性AToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.添加产量成本属性AToolStripMenuItem.Text = "添加 产量/成本 属性(&A)";
+            this.添加产量成本属性AToolStripMenuItem.Click += new System.EventHandler(this.SetAttributeMenuItem_Click);
             // 
             // 帮助HToolStripMenuItem
             // 
@@ -195,12 +192,7 @@
             this.新建NToolStripButton,
             this.打开OToolStripButton,
             this.保存SToolStripButton,
-            this.打印PToolStripButton,
             this.toolStripSeparator,
-            this.剪切UToolStripButton,
-            this.复制CToolStripButton,
-            this.粘贴PToolStripButton,
-            this.toolStripSeparator1,
             this.帮助LToolStripButton});
             this.toolStrip.Location = new System.Drawing.Point(0, 25);
             this.toolStrip.Name = "toolStrip";
@@ -235,52 +227,12 @@
             this.保存SToolStripButton.Name = "保存SToolStripButton";
             this.保存SToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.保存SToolStripButton.Text = "保存(&S)";
-            // 
-            // 打印PToolStripButton
-            // 
-            this.打印PToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.打印PToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("打印PToolStripButton.Image")));
-            this.打印PToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.打印PToolStripButton.Name = "打印PToolStripButton";
-            this.打印PToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.打印PToolStripButton.Text = "打印(&P)";
+            this.保存SToolStripButton.Click += new System.EventHandler(this.SaveLayerAsMenuItem_Click);
             // 
             // toolStripSeparator
             // 
             this.toolStripSeparator.Name = "toolStripSeparator";
             this.toolStripSeparator.Size = new System.Drawing.Size(6, 25);
-            // 
-            // 剪切UToolStripButton
-            // 
-            this.剪切UToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.剪切UToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("剪切UToolStripButton.Image")));
-            this.剪切UToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.剪切UToolStripButton.Name = "剪切UToolStripButton";
-            this.剪切UToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.剪切UToolStripButton.Text = "剪切(&U)";
-            // 
-            // 复制CToolStripButton
-            // 
-            this.复制CToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.复制CToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("复制CToolStripButton.Image")));
-            this.复制CToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.复制CToolStripButton.Name = "复制CToolStripButton";
-            this.复制CToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.复制CToolStripButton.Text = "复制(&C)";
-            // 
-            // 粘贴PToolStripButton
-            // 
-            this.粘贴PToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.粘贴PToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("粘贴PToolStripButton.Image")));
-            this.粘贴PToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.粘贴PToolStripButton.Name = "粘贴PToolStripButton";
-            this.粘贴PToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.粘贴PToolStripButton.Text = "粘贴(&P)";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // 帮助LToolStripButton
             // 
@@ -388,12 +340,7 @@
         private System.Windows.Forms.ToolStripButton 新建NToolStripButton;
         private System.Windows.Forms.ToolStripButton 打开OToolStripButton;
         private System.Windows.Forms.ToolStripButton 保存SToolStripButton;
-        private System.Windows.Forms.ToolStripButton 打印PToolStripButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
-        private System.Windows.Forms.ToolStripButton 剪切UToolStripButton;
-        private System.Windows.Forms.ToolStripButton 复制CToolStripButton;
-        private System.Windows.Forms.ToolStripButton 粘贴PToolStripButton;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton 帮助LToolStripButton;
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;

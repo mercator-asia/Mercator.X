@@ -109,6 +109,8 @@ namespace Mercator.Evaluate.Assistant
         /// </summary>
         public bool IsNew = false;
 
+        public bool IsCPPC = false;
+
         /// <summary>
         /// 指定作物
         /// </summary>
@@ -493,25 +495,48 @@ namespace Mercator.Evaluate.Assistant
         {
             var totalScore = 0d;
 
-            if (patch.LandClass == "水田")
+            switch(patch.LandClass)
             {
-                for (int i = 0; i < 2; i++)
-                {
-                    string formula;
-                    var score = CalculateCropNaturalQualityScore(patch, patch.Crops[i].Name, out formula);
-                    var ptp = GetCropPTP(patch.County, patch.Crops[i].Name);
-                    totalScore += score * ptp * patch.Crops[i].GOCCoefficient;
-                }
-            }
-            else
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    string formula;
-                    var score = CalculateCropNaturalQualityScore(patch, patch.Crops[i].Name, out formula);
-                    var cppc = GetCropCPPC(patch.County, patch.Crops[i].Name);
-                    totalScore += score * cppc * patch.Crops[i].GOCCoefficient;
-                }
+                case "水田":
+                    for (int i = 0; i < 2; i++)
+                    {
+                        string formula;
+                        var score = CalculateCropNaturalQualityScore(patch, patch.Crops[i].Name, out formula);
+                        var ptp = GetCropPTP(patch.County, patch.Crops[i].Name);
+                        totalScore += score * ptp * patch.Crops[i].GOCCoefficient;
+                    }
+                    break;
+                case "旱地":
+                    for (int i = 0; i < 2; i++)
+                    {
+                        string formula;
+                        var score = CalculateCropNaturalQualityScore(patch, patch.Crops[i].Name, out formula);
+                        var cppc = GetCropCPPC(patch.County, patch.Crops[i].Name);
+                        totalScore += score * cppc * patch.Crops[i].GOCCoefficient;
+                    }
+                    break;
+                case "水浇地":
+                    if (patch.IsCPPC)
+                    {
+                        for (int i = 0; i < 2; i++)
+                        {
+                            string formula;
+                            var score = CalculateCropNaturalQualityScore(patch, patch.Crops[i].Name, out formula);
+                            var cppc = GetCropCPPC(patch.County, patch.Crops[i].Name);
+                            totalScore += score * cppc * patch.Crops[i].GOCCoefficient;
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < 2; i++)
+                        {
+                            string formula;
+                            var score = CalculateCropNaturalQualityScore(patch, patch.Crops[i].Name, out formula);
+                            var ptp = GetCropPTP(patch.County, patch.Crops[i].Name);
+                            totalScore += score * ptp * patch.Crops[i].GOCCoefficient;
+                        }
+                    }
+                    break;
             }
 
             return totalScore;

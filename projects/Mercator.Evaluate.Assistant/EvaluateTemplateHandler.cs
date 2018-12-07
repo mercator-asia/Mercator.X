@@ -17,11 +17,12 @@ namespace Mercator.Evaluate.Assistant
         /// </summary>
         /// <param name="lPolygons">评价单元集合</param>
         /// <returns></returns>
-        private CellData[,] Evaluate(List<Patch> patches, bool indexType)
+        private CellData[,] Evaluate(List<Patch> patches)
         {
-            var data = new CellData[patches.Count + 1, 53];
+            var data = new CellData[patches.Count + 2, 53];
 
-            var area = 0d;
+            var zarea = 0d;
+            var karea = 0d;
 
             int i = 0;
 
@@ -53,7 +54,7 @@ namespace Mercator.Evaluate.Assistant
                         PP = SQLiteHelper.GetCropPTP(patch.County, patch.Crops[0].Name);
                         break;
                     case "水浇地":
-                        PP = indexType ? SQLiteHelper.GetCropCPPC(patch.County, patch.Crops[0].Name) : SQLiteHelper.GetCropPTP(patch.County, patch.Crops[0].Name);
+                        PP = patch.IsCPPC ? SQLiteHelper.GetCropCPPC(patch.County, patch.Crops[0].Name) : SQLiteHelper.GetCropPTP(patch.County, patch.Crops[0].Name);
                         break;
                     case "旱地":
                         PP = SQLiteHelper.GetCropCPPC(patch.County, patch.Crops[0].Name);
@@ -78,7 +79,7 @@ namespace Mercator.Evaluate.Assistant
                         PP = SQLiteHelper.GetCropPTP(patch.County, patch.Crops[1].Name);
                         break;
                     case "水浇地":
-                        PP = indexType ? SQLiteHelper.GetCropCPPC(patch.County, patch.Crops[1].Name) : SQLiteHelper.GetCropPTP(patch.County, patch.Crops[1].Name);
+                        PP = patch.IsCPPC ? SQLiteHelper.GetCropCPPC(patch.County, patch.Crops[1].Name) : SQLiteHelper.GetCropPTP(patch.County, patch.Crops[1].Name);
                         break;
                     case "旱地":
                         PP = SQLiteHelper.GetCropCPPC(patch.County, patch.Crops[1].Name);
@@ -120,6 +121,12 @@ namespace Mercator.Evaluate.Assistant
                     utilizationCoefficient = SQLiteHelper.CalculateUtilizationCoefficient(patch.UtilizationCoefficient, score1, score2);
 
                     data[i, 40] = new CellData(utilizationCoefficient, "0.000");
+
+                    zarea += patch.Area;
+                }
+                else
+                {
+                    karea += patch.Area;
                 }
 
                 if (double.IsInfinity(utilizationCoefficient)) { continue; }
@@ -154,24 +161,39 @@ namespace Mercator.Evaluate.Assistant
                 cellFontGreen.IsBold = true;
                 data[i, 51] = new CellData(patch.StateEconomicalGrade, "0", cellFontGreen);
 
-                area += patch.Area;
-
                 i++;
             }
 
 
-            double zrd=0d, lyd=0d, jjd=0d;
+            double zrd = 0d, lyd = 0d, jjd = 0d;
+            double zrd1 = 0d, lyd1 = 0d, jjd1 = 0d;
             for (int j = 0; j < i; j++)
             {
-                zrd += data[j, 49].NumericalValue * data[j, 52].NumericalValue / area;
-                lyd += data[j, 50].NumericalValue * data[j, 52].NumericalValue / area;
-                jjd += data[j, 51].NumericalValue * data[j, 52].NumericalValue / area;
+                if(!patches[j].IsNew)
+                {
+                    zrd += data[j, 49].NumericalValue * data[j, 52].NumericalValue / zarea;
+                    lyd += data[j, 50].NumericalValue * data[j, 52].NumericalValue / zarea;
+                    jjd += data[j, 51].NumericalValue * data[j, 52].NumericalValue / zarea;
+                }
+                else
+                {
+                    zrd1 += data[j, 49].NumericalValue * data[j, 52].NumericalValue / karea;
+                    lyd1 += data[j, 50].NumericalValue * data[j, 52].NumericalValue / karea;
+                    jjd1 += data[j, 51].NumericalValue * data[j, 52].NumericalValue / karea;
+                }
             }
 
+            data[i, 48] = new CellData("整理");
             data[i, 49] = new CellData(zrd, "0.0");
             data[i, 50] = new CellData(lyd, "0.0");
             data[i, 51] = new CellData(lyd, "0.0");
-            data[i, 52] = new CellData(area, "0.0000");
+            data[i, 52] = new CellData(zarea, "0.0000");
+
+            data[i + 1, 48] = new CellData("开发");
+            data[i + 1, 49] = new CellData(zrd1, "0.0");
+            data[i + 1, 50] = new CellData(lyd1, "0.0");
+            data[i + 1, 51] = new CellData(lyd1, "0.0");
+            data[i + 1, 52] = new CellData(karea, "0.0000");
 
             return data;
         }
@@ -202,7 +224,7 @@ namespace Mercator.Evaluate.Assistant
         /// </summary>
         /// <param name="patches">评价单元集合</param>
         /// <returns></returns>
-        public Hashtable GetPlaceholdersWithData(List<Patch> patches, bool indexType)
+        public Hashtable GetPlaceholdersWithData(List<Patch> patches)
         {
             var table = new Hashtable();
             foreach (var placeholder in Placeholders)
@@ -211,7 +233,7 @@ namespace Mercator.Evaluate.Assistant
                 {
                     case "{质量等别评定}":
                         if (!Placeholder.ContainsKey(table, placeholder.Key))
-                            table.Add(placeholder, Evaluate(patches, indexType));
+                            table.Add(placeholder, Evaluate(patches));
                         break;
                 }
             }
@@ -224,10 +246,10 @@ namespace Mercator.Evaluate.Assistant
         /// <param name="xlsFileName">评定结果文件（.xls）</param>
         /// <param name="patches">评价单元集合</param>
         /// <param name="indexType">是否使用气候指数计算水浇地</param>
-        public void ToSheet(string xlsFileName, List<Patch> patches, bool indexType)
+        public void ToSheet(string xlsFileName, List<Patch> patches)
         {
             // 获得填充了数据的占位符集合
-            var table = GetPlaceholdersWithData(patches, indexType);
+            var table = GetPlaceholdersWithData(patches);
             // 保存文件
             base.ToSheet(xlsFileName, table, Sheets);
         }
